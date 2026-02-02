@@ -1,0 +1,129 @@
+from random import choice as c
+
+whitelist = list(chr(i) for i in range(65, 91)).__add__(list(chr(i) for i in range(97, 122))).__add__(list("-")) # A - Z and a - z
+guessedLetter = set()
+words = ["hello", "tree", "apple", "size", "world", "fry", "egg", "input"]
+chosenWord = c(words)
+Word = list("_"*len(chosenWord))
+drawings = [
+    
+""" 
+ 
+ 
+ 
+ 
+ 
+ 
+""",
+""" 
+ 
+ 
+ 
+ 
+ 
+──────┴──────
+""",
+""" 
+      │
+      │
+      │
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │  
+      │
+      │
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☺
+      │
+      │
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☺
+      │      |
+      │      |
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☺
+      │      |
+      │    ⟋ | 
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☺
+      │      |
+      │    ⟋ | ⟍
+      │
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☺
+      │      |
+      │    ⟋ | ⟍
+      │     ╱
+      │
+──────┴──────
+""",
+"""      ┌──────┐
+      │      ☹
+      │      |
+      │    ⟋ | ⟍
+      │     ╱ ╲
+      │
+──────┴──────
+"""
+] # len 10
+
+tries = len(drawings)
+
+# https://stackoverflow.com/questions/69773073/characters-for-diagonal-lines
+# unicode 2500 | 09C4
+
+
+while tries > 1:
+    print(f"{drawings[-tries]}try to guess : {" ".join(Word)}")
+    print(f"tries left : {tries-1}")
+    guess = str(input("type a letter :\t")).lower()
+    if guess not in whitelist:
+        print("error : only A - Z and a - z")
+        continue
+    if guess in guessedLetter:
+        print("already guessed")
+    elif guess in chosenWord:
+
+        guessedLetter.add(guess) # add typed letter to the set
+        for k in range(len(Word)):
+            if chosenWord[k] == guess:
+                Word[k] = guess #update guessed word
+    elif guess not in chosenWord:
+        print("wrong guess")
+        tries -= 1
+        if guess != "-":
+            guessedLetter.add(guess) #add typed letter to the set
+    else:
+        print("error")
+    if "".join(Word) == chosenWord:
+        break
+else:
+    print("\n"*5)
+    print(f"{drawings[-1]}", end="")
+    print(f"The word was {chosenWord}. Better luck next time!")
+    quit()
+
+
+print(f"{"\n"*10}You guesses the word : \"{chosenWord}\" in {len(drawings)-tries} {"try" if len(drawings)-tries != 1 else "tries"}")
