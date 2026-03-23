@@ -1,0 +1,161 @@
+import kotlin.math.PI
+import kotlin.math.pow
+var k: Int = 1
+
+// Test
+class Rectanglengthe(var length: Double = 5.0, var L: Double = 10.0) {
+    constructor(length: Int, L: Int): this() {
+        this.length = length.toDouble()
+        this.L = L.toDouble()
+    }
+    constructor(length: Int, L: Double): this() {
+        this.length = length.toDouble()
+        this.L = L
+    }
+    constructor(length: Double, L: Int): this() {
+        this
+    }
+}
+
+class Cercle(var X: Number = 0, var Y: Number = 0, radius: Number) {
+    var perimeter: Double = 0.0
+    var surface: Double = 0.0
+    var radius: Number = 0
+    get() {
+        return field
+    }
+    set(value) {
+        field = value
+//        calcPer()
+//        calcSur()
+
+
+        }
+    private fun calcPer() {perimeter = 2 * PI * radius.toDouble()}
+    private fun calcSur() {surface = PI*radius.toDouble().pow(2)}
+
+    fun getValues() {
+        println("perimeter : $perimeter")
+        println("surface : $surface")
+        println("surface : $surface")
+        println("radius : $radius")
+        println("radius : $radius $radius")
+
+    }
+
+    init {
+        this.radius = radius
+        calcPer()
+        calcSur()
+    }
+}
+
+// Test
+// ex 1
+open class Personne(val name: String, var size: Double = 0.0, var weight: Double = 0.0) {
+
+
+    constructor(name:String, size: Int, weight: Int): this(name) {
+
+        this.size = size.toDouble()
+        this.weight = weight.toDouble()
+    }
+
+    constructor(name:String, size: Double, weight: Int): this(name) {
+        this.size = size
+        this.weight = weight.toDouble()
+    }
+
+    constructor(name:String, size: Int, weight: Double): this(name) {
+        this.size = size.toDouble()
+        this.weight = weight
+    }
+
+    fun getIMC(): Double {
+        return weight / (size * size)
+
+    }
+
+    open fun getValues() {
+        println("name : $name")
+        println("size : $size")
+        println("weight : $weight")
+        println("IMC : ${getIMC()}")
+    }
+
+}
+
+class Location(val nom:String, val vehicule: String, var km: Double = 0.0, var jourLoc: Double = 0.0, category: String) {
+    constructor(km: Double, jourLoc: Double) : this(nom="", vehicule = "", category = "") {
+        this.km = km
+        this.jourLoc = jourLoc
+    }
+
+    constructor(km: Number, jourLoc: Number) : this(nom="", vehicule = "", category = "") {
+        this.km = km.toDouble()
+        this.jourLoc = jourLoc.toDouble()
+    }
+
+
+
+    val category: String = category.uppercase()
+
+    fun montantLocation(): Double? {
+        if (arrayOf("E", "C", "L").contains(this.category)) {
+            var value: Double?
+            when (this.category) {
+                "E" -> value = 30 * this.jourLoc
+                "C" -> value = 50 * this.jourLoc
+                "L" -> value = 75 * this.jourLoc
+                else -> value = null
+            }
+            return value
+        }
+        return null
+    }
+    fun kmSupp(): Double {
+        return this.km+(100*this.jourLoc)
+    }
+    fun psKmSupp() : Double {
+        return 0.5/this.km*kmSupp()
+    }
+    fun montantTotal(): Double {
+        println(montantTotal().toString())
+        println(kmSupp().toString())
+        return montantTotal()+kmSupp()
+    }
+
+    fun getValues() {
+        var ml = montantLocation()
+        var kms = kmSupp()
+        var pskms = psKmSupp()
+        println(" nom : $nom\n vehicule : $vehicule\n category : $category\n km : $category\n jourLoc : $jourLoc\n montantLocation : $ml\n kmSupplementaire : $kms\n psKmSupplementaire : $pskms\n")
+    }
+}
+
+
+fun main() {
+    fun exercice01() {
+        val a: Personne =
+            object :
+                Personne("Alexandre", 1.2, 90) {
+                var firstname = "Brianto"
+                override fun getValues() {
+                    println("name : $name")
+                    println("firstname : $firstname")
+                    println("size : $size")
+                    println("weight : $weight")
+                    println("IMC : ${getIMC()}")
+                }
+            }
+        println(a.getValues())
+    }
+    fun exercice02() {
+        val b: Location = Location(nom = "Alex", vehicule = "Voiture", category = "E", km = 3000.0, jourLoc = 15.0)
+        println(b.montantTotal())
+    }
+    exercice02()
+
+}
+
+

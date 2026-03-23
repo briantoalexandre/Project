@@ -1,0 +1,23 @@
+import kotlin.math.PI
+import kotlin.math.pow
+
+class Circle(
+    val radius : Double,)
+ {
+
+    fun values() {
+        println("radius : $radius")
+        println("perimeter :  ${perimeter()} ")
+        println("surface :  ${surface()} ")
+        println("aire :  ${aire()} ")
+    }
+
+    private fun perimeter(): Double {return 2*PI*radius}
+    private fun surface(): Double {return PI*radius.pow(2)}
+    private fun aire(): Double {return 4/3*PI*radius.pow(3)}
+    }
+
+fun main() {
+    val person = Circle(18.2)
+    person.values()
+}

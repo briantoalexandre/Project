@@ -1,0 +1,310 @@
+import kotlin.random.Random
+
+val produits: MutableMap<String, MutableMap<String, Double>> = mutableMapOf() // exercice 29
+val classmates: MutableList<String> = mutableListOf()
+
+fun main() {
+    fun exercice5() {
+        print("Prenom : ")
+        val pren: String = readln()
+        println("Bonjour $pren")
+    }
+
+    fun exercice6() {
+        print("Prenom : ")
+        val pren: String = readln()
+        print("année de naissance : ")
+        val birth: Int = readln().toInt()
+        val year: Int = 2026
+        println("Bonjour $pren, vous avez ${year - birth} ans.")
+    }
+
+    fun exercice7() {
+        print("Nombre 1 : ")
+        val n1: Float = readln().toFloat()
+        print("Nombre 2 : ")
+        val n2: Float = readln().toFloat()
+        print("Somme : ${n1 + n2}")
+    }
+
+    fun exercice8() {
+        print("Nombre 1 : ")
+        val n1: Double = readln().toDouble()
+        print("Nombre 2 : ")
+        val n2: Double = readln().toDouble()
+        println("Somme : ${n1 + n2}")
+        println("Difference : ${n1 - n2}")
+        println("Produit : ${n1 * n2}")
+        if (n2 != 0.0) {
+            println("Division : ${(n1 / n2)}")
+        } else {
+            println("Division : ERROR")
+        }
+    }
+
+    fun exercice9() {
+        print("Celsius : ")
+        val C: Double = readln().toDouble()
+        var F: Double = C * 9 / 5 + 32
+        println("Celsius : $C")
+        println("Fahrenheit : $F")
+    }
+
+    // partie 3
+    fun exercice10() {
+        print("nombre 1 : ")
+        val n1: Int = readln().toInt()
+        if (n1 % 2 == 0) {
+            println("$n1 est pair")
+        } else {
+            println("$n1 est impair")
+        }
+    }
+
+    fun exercice11() {
+        print("nombre 1 : ")
+        val n1: Int = readln().toInt()
+        if (n1 > 0) {
+            println("$n1 est positif")
+        } else if (n1 < 0) {
+            println("$n1 est négatif")
+        } else {
+            println("$n1 est neutre")
+        }
+    }
+
+    fun exercice12() {
+        print("age : ")
+        val age: Int = readln().toInt()
+        if (age > 0) {
+            if (age < 18) {
+                println("Vous êtes mineur")
+            } else {
+                println("Vous êtes majeur")
+            }
+        } else {
+            println("erreur")
+        }
+    }
+
+    fun exercice13() {
+        print("nombre 1 : ")
+        val n1: Int = readln().toInt()
+        print("nombre 2 : ")
+        val n2: Int = readln().toInt()
+        println("le plus grand est ${if (n1>n2) n1 else n2}")
+    }
+
+    fun exercice14() {
+        print("Note : ")
+        val note: Int = readln().toInt()
+        if ((0 <= note) and (note <= 20)) {
+            if (note < 15) print("Mentien : Aucune")
+            else if (note < 17) print("Mentien : bien")
+            else print("Mentien : tres bien")
+        } else ("error")
+    }
+
+    // Partie 4
+    fun exercice15() {
+        for (i in 1..10) {
+            println("$i")
+        }
+    }
+
+    fun exercice16() {
+        for (i in 10 downTo 1) {
+            println("$i")
+        }
+    }
+
+    fun exercice17() {
+        print("Nombre : ")
+        val n1: Int = readln().toInt()
+        for (i in 1..10) {
+            println("$n1 x $i = ${n1 * i}")
+        }
+    }
+
+    fun exercice18() {
+        var i: Double = 0.toDouble()
+        for (k in 1..5) {
+            i += readln().toDouble()
+        }
+        println("somme : $i")
+    }
+
+    fun exercice19() {
+        var i: Double = 0.toDouble()
+        val j: Int = 5
+        for (k in 1..j) {
+            i += readln().toDouble()
+        }
+        println("somme : ${i / j}")
+    }
+
+    fun exercice20() {
+        val i: Int = readln().toInt()
+        var j: Int = 1
+        for (k in 1..i) {
+            j *= k
+        }
+        println("factorielle : $j")
+    }
+
+    // partie 5
+    fun exercice22() { // et exercice 21
+        val j: Int = Random.nextInt(1, 100)
+        var n: Int
+        do {
+            print("Nombre : ")
+            n = readln().toInt()
+            if (n > j) println("Trop grand")
+            else if (n < j) println("Trop petit")
+
+        } while (n != j)
+        println("bravo")
+    }
+
+    fun exercice23() {
+        var c: Int = 0
+        print("Mot : ")
+        val mot: String = readln()
+        val voy: CharArray = charArrayOf('a', 'e', 'i', 'y', 'o', 'u')
+        for (letter in mot) {
+            if (letter.toChar() in voy) c++
+        }
+        println("Voyelles : $c")
+    }
+
+    // partie 6
+
+    fun exercice24() {
+        val names: Array<String> = arrayOf("alexandre", "sani", "moustapha", "raken")
+        for (name in names) {
+            println(name)
+        }
+    }
+
+    fun exercice25() {
+        val names: MutableList<String> = ArrayList()
+        var name: String
+        for (i in 1..4) {
+            print("Prenom : ")
+            name = readln()
+            names.add(name)
+        }
+        println(names)
+    }
+
+    fun exercice26() {
+        val notes: MutableList<Double> = ArrayList()
+        var note: Double
+        for (i in 1..4) {
+            print("Note : ")
+            note = readln().toDouble()
+            notes.add(note)
+        }
+        println("Moyenne : ${notes.average()}")
+    }
+
+    fun exercice27() {
+        val villes: Array<String> = arrayOf("Paris", "Marseille", "Lyon", "Toulouse", "Nice")
+        var ville: String
+        do {
+            print("Taper un nom de ville, ou stop : ")
+            ville = readln().lowercase()
+            if (villes.map { it.lowercase() }
+                    .contains(ville)) println("Ville trouvée") else println("Ville pas trouvée")
+
+        } while (ville != "stop")
+    }
+    // Partie 7
+
+    fun exercice28() {
+        fun userInput(): MutableList<Double> {
+            val result: MutableList<Double> = mutableListOf()
+            for (i in 1..10) {
+                print("Note : ")
+                result.add(readln().toDouble())
+            }
+            return result
+        }
+
+        var notes: MutableList<Double> = mutableListOf(12.0, 15.0, 9.0, 14.0, 16.0, 10.0, 18.0, 13.0, 11.0, 17.0)
+        notes = userInput()
+        println("Moyenne ${notes.sum() / notes.count()}")
+        println("Note Max ${notes.max()}")
+        println("Note Max ${notes.min()}")
+    }
+
+    fun exercice29() {
+        fun inflation(price: Int = Random.nextInt(10, 30)): Double  {
+            return price*(1/Random.nextInt(2,12).toDouble()+1.0)
+        }
+
+        fun insert() { // v = value
+            var input2: String
+            print("article : ")
+            input2 = readln().lowercase()
+            if (!produits.contains(input2)) produits.put(input2, mutableMapOf("price" to inflation(), "quantity" to 1.0))
+            else produits.put(input2, mutableMapOf("price" to inflation(produits[input2]!!.get("price")!!.toInt()), "quantity" to produits[input2]!!["quantity"]!!.plus((1))))
+
+        }
+        fun select() {
+            if (!produits.isEmpty()) {
+                println("produits : ")
+                produits.forEach { (k, v)->
+                    println(" $k : $v")
+                }
+            } else println("empty")
+        }
+        var input: String
+        do {
+            print("cmd : ")
+            input = readln().lowercase()
+            if (input=="insert") insert()
+            else if (input=="select") select()
+            else println("commands :\n insert\n select")
+        } while (!arrayOf("stop", "exit").contains(input))
+
+    }
+
+    fun exercice30() {
+        fun insert() {
+            print("insert : ")
+            var input2: String
+            input2 = readln().lowercase()
+            if (!classmates.contains(input2)) classmates.add(input2)
+            else println("Student is already in class")
+        }
+        fun select() {
+            if (!classmates.isEmpty()) {
+                println("classmates : ")
+                classmates.forEach {
+                    println(" $it")
+                }
+            } else println("empty")
+        }
+        fun find() {
+            if (!classmates.isEmpty()) {
+                print("find : ")
+                var input3: String
+                input3 = readln().lowercase()
+                if (classmates.contains(input3)) println("Student found")
+                else println("Student not found")
+            } else println("empty")
+        }
+        var input: String
+        do {
+            print("cmd : ")
+            input = readln().lowercase()
+            if (input=="insert") insert()
+            else if (input=="select") select()
+            else if (input=="find") find()
+            else println("commands :\n insert\n select\n find")
+        } while (!arrayOf("stop", "exit").contains(input))
+    }
+    exercice30()
+}
+
