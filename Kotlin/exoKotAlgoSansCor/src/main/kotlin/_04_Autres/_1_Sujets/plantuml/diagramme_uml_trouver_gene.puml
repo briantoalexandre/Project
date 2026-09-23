@@ -1,0 +1,23 @@
+@startuml
+start
+
+:**tailleGene = gene.length**;
+:**tailleSeqADN = seqADN.length**;
+:**finRecherche = tailleSeqADN - tailleGene**;
+
+while (Pour **i** de **0** à **finRecherche**)
+    while (Pour **j** de **0** à **tailleGene - 1**)
+        if (**gene[j] != seqADN[i + j]**) then (oui)
+            break
+        else (non)
+            if (**j == tailleGene - 1**) then (oui)
+                :Retourner **true**;
+                stop
+            endif
+        endif
+    endwhile
+endwhile
+
+:Retourner **false**;
+stop
+@enduml

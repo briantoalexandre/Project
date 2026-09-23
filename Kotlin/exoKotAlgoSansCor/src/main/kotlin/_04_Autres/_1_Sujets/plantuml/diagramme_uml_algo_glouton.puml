@@ -1,0 +1,32 @@
+@startuml
+start
+
+:Reste à rendre en centimes :\n **resteRendu = somme * 100**;
+:Créer map mutable :\n **renduDeMonnaie**;
+:Créer map mutable :\n **renduDeMonnaieCentimes**;
+
+partition "**Initialisation**" {
+    while (Pour chaque **piece** dans **pieces**)
+        :**renduDeMonnaieCentimes[piece * 100] = 0**;
+    endwhile
+}
+
+partition "**Boucle de rendu**" {
+    while (**resteRendu > 0**) is (oui)
+        while (Pour chaque paire dans **renduDeMonnaieCentimes**)
+            :**renduDeMonnaieCentimes[paire.key] = (resteRendu / paire.key).toInt()**;
+            :**resteRendu -= (paire.key * paire.value)**;
+        endwhile
+    endwhile (non)
+}
+
+partition "**Conversion en unités**" {
+    while (Pour chaque paire dans **renduDeMonnaieCentimes**)
+        :**renduDeMonnaie[paire.key / 100] = paire.value**;
+    endwhile
+}
+
+:Retourner **renduDeMonnaie**;
+
+stop
+@enduml

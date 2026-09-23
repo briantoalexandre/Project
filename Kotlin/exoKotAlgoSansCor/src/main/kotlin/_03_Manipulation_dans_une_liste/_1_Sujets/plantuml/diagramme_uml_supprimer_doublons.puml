@@ -1,0 +1,26 @@
+@startuml
+start
+
+:Copier **liste** en **listeCopie**;
+:**i = 0**;
+
+while (**i <= listeCopie.lastIndex**) is (oui)
+
+    partition #lightBlue "Boucle de suppression des doublons" {
+        :**j = i + 1**;
+        while (**j <= listeCopie.lastIndex**) is (oui)
+            if (**listeCopie[i] == listeCopie[j]**) then (oui)
+                :Supprimer élément en position **j** (**removeAt(j)**);
+            else (non)
+                :**j++**;
+            endif
+        endwhile (non)
+    }
+
+    :**i++**;
+endwhile (non)
+
+:Retourner **listeCopie**;
+
+stop
+@enduml

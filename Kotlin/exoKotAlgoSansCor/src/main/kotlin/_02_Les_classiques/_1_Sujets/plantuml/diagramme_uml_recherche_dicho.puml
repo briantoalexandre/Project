@@ -1,0 +1,25 @@
+@startuml
+start
+
+:Initialiser **iDepart = 0**;
+:Initialiser **iFin = list.lastIndex**;
+:Calculer **iMed = (iDepart + iFin) / 2**;
+
+while (**iDepart <= iFin**) is (oui)
+    if (**list[iMed] == cible**) then (oui)
+        :Retourner **iMed**;
+        stop
+    else (non)
+        if (**cible < list[iMed]**) then (oui)
+            :**iFin = iMed - 1**;
+        else (non)
+            :**iDepart = iMed + 1**;
+        endif
+        :**iMed = (iDepart + iFin) / 2**;
+    endif
+endwhile (non)
+
+:**Retourner -1**;
+
+stop
+@enduml

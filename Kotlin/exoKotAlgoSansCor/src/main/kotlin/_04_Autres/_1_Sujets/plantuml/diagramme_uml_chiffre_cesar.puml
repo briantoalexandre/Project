@@ -1,0 +1,21 @@
+@startuml
+start
+
+:**messageCesar = ""**;
+
+while (Pour chaque **lettre** dans **message**)
+    if (**lettre** est dans **'a'..'z'**) then (oui)
+        :**nouvelleLettre = (((lettre - 'a' + cle) % 26) + 'a').toChar()**;
+    else (non)
+        if (**lettre ** est dans **'A'..'Z'**) then (oui)
+            :**nouvelleLettre = (((lettre - 'A' + cle) % 26) + 'A').toChar()**;
+        else (non)
+            :**nouvelleLettre = lettre**;
+        endif
+    endif
+    :**messageCesar += nouvelleLettre**;
+endwhile
+
+:Retourner **messageCesar**;
+stop
+@enduml

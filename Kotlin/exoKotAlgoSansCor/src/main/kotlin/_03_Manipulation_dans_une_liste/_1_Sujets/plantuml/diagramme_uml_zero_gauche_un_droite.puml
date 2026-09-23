@@ -1,0 +1,20 @@
+@startuml
+start
+
+:Copier **liste** en **copieListe**;
+:**iDeb = 0**;
+:**iFin = copieListe.lastIndex**;
+
+while (**iDeb != iFin**) is (oui)
+    if (**copieListe[iDeb] == 1**) then (oui)
+        :**copieListe[iDeb] = copieListe[iFin]**;
+        :**copieListe[iFin] = 1**;
+        :**iFin--**;
+    endif
+    :**iDeb++**;
+endwhile (non)
+
+:Retourner copieListe;
+
+stop
+@enduml
